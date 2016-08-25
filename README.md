@@ -1,4 +1,4 @@
-# Package pg-to-nz: PostgreSQL to Netezza (PureData for Analytics) data copying
+# Package pg-to-nz: PostgreSQL to Netezza (PureData for Analytics) database migration
 
 This is a simple python package that I wrote to do one time data movement from PostgreSQL to Netezza
 
