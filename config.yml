@@ -8,7 +8,7 @@ nz_db: <your nz database name>
 nz_user: <your nz user name>
 nz_pwd: <your nz password>
 nz_client_dir: C:/Program Files (x86)/IBM Netezza Tools/Bin
-#nz_dsn: RESEVO
+
 nz_driver: NetezzaSQL
 nz_server: <nz IP address or hostname>
 
