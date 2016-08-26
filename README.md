@@ -32,7 +32,7 @@ Requires the following python packages:
 
 ## Settings
 
-all settings located in config.yml. Classes don't take parameters, everything is configured via file.
+all settings are located in config.yml. Classes don't take parameters, everything is configured via file.
 
   * pg_host: your postgres hostname or IP
   * pg_db:  your postgres database name

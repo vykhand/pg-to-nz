@@ -23,11 +23,11 @@ class DBMigrator:
         self._nz.connect()
 
 
-    def migrate_ddl(self, drop_table = False, raise_error = True):
+    def migrate_ddl(self, drop_table = False, raise_error = True, lower = False):
         pg =  self._pg
         nz = self._nz
 
-        for s in pg.get_db_ddl(drop_table = drop_table):
+        for s in pg.get_db_ddl(drop_table = drop_table, lower = lower):
             nz.run_ddl(s, raise_error)
 
     def migrate_table(self, table, trunc_tables = False, overwrite_files = False, schema = 'public'):
@@ -45,6 +45,10 @@ class DBMigrator:
         for t in self._pg.get_table_list(schema):
             self.migrate_table(t, trunc_tables, overwrite_files, schema)
 
+    def rename_to_lower(self, schema = 'public'):
+        '''this is a dirty hack because mondrian wants names in lower case'''
+        for t in self._pg.get_table_list(schema):
+            self._nz.run_ddl('ALTER TABLE {} RENAME TO "{}"'.format(t, t.lower()))
 
 
 

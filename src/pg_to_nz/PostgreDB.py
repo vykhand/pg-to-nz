@@ -44,7 +44,7 @@ class PostgreDB:
         tables = [a[0] for a in cur.fetchall()]
         return tables
 
-    def get_table_ddl(self, table_name, schema = 'public'):
+    def get_table_ddl(self, table, schema ='public'):
 
 
         qry = '''
@@ -55,12 +55,12 @@ class PostgreDB:
         WHERE table_schema = '{}'
         AND table_name   = '{}'
         order by ordinal_position
-        '''.format(schema, table_name)
+        '''.format(schema, table)
         cur = self._conn.cursor()
 
         cur.execute(qry)
         ddl = []
-        ddl.append( 'CREATE TABLE {}  ('.format(table_name))
+        ddl.append( 'CREATE TABLE {}  ('.format(table))
 
         for column_name, data_type, character_maximum_length, \
             character_octet_length, numeric_precision, numeric_precision_radix, \
@@ -95,11 +95,11 @@ class PostgreDB:
         cur.close()
         return '\n'.join(ddl)
 
-    def get_db_ddl(self, schema = 'public', drop_table = True):
+    def get_db_ddl(self, schema = 'public', drop_table = True, lower = True):
         ddls = []
         for t in self.get_table_list(schema):
             if drop_table:
-                ddls.append('DROP TABLE {};'.format(t))
+                ddls.append('DROP TABLE {};'.format('"' + t.lower() + '"' if lower else t))
             ddls.append(self.get_table_ddl(t, schema))
             ddls.append('')
         return ddls

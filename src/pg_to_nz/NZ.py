@@ -45,7 +45,7 @@ class NZ:
                '-nullValue ' + null_val,
                '-boolStyle ' + boolstyle,
                '-escapeChar ' + escapechar,
-               '-t ' + table,
+               '-t ' + table.lower(),
                '-lf ' + logfile,
                '-bf ' + badfile,
                '-df ' + fname,
