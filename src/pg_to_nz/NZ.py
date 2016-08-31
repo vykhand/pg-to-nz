@@ -29,7 +29,7 @@ class NZ:
     def disconnect(self):
         self._conn.close()
 
-    def load_table(self, table, fname, logdir = None,  sep = '|', null_val = '\N', boolstyle = 't_f', escapechar = '\\'):
+    def load_table(self, table, fname, logdir = None,  sep = '0', null_val = '\N', boolstyle = 't_f', escapechar = '\\'):
 
         ldir = logdir or os.path.dirname(fname)
 
@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
     root_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     log_dir = os.path.join(root_dir, 'data', 'logs')
-    nz.load_table('fintransactions', r'D:\05.DEV_REPOS\pg_to_nz\data\public.fintransactions.csv', logdir =  log_dir )
+    nz.load_table('dailycashflow', r'D:\05.DEV_REPOS\pg_to_nz\data\public.dailycashflow.csv', logdir =  log_dir, sep = r"|" )
 
     # '-host "10.91.27.99"', '-db DB_RESEVO', '-u USR_RESEVO', '-pw passw0rd', '-t statement', '-df "D:\\05.DEV_REPOS\\pg_to_nz\\data\\public.statement.csv"',
     #subprocess.call(['C:/Program Files (x86)/IBM Netezza Tools/Bin/nzload.exe', '--host blala'])

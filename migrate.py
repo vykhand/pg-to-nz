@@ -15,6 +15,6 @@ if __name__ == '__main__':
 
     mg = dbm.DBMigrator()
 
-    mg.migrate_ddl(drop_table = True, raise_error=False)
-    mg.migrate_data(trunc_tables=True, overwrite_files=False)
-    #mg.rename_to_lower()
+    mg.migrate_ddl(drop_table = True, raise_error=False, lower = True, views = True)
+    mg.migrate_data(trunc_tables=True, overwrite_files=False, views=True)
+    mg.rename_to_lower(views = True)

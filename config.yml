@@ -1,14 +1,14 @@
-pg_host: <your postgres hostname or IP>
-pg_db:  <your postgres database name>
-pg_user: <your postgres user name>
-pg_pwd: <your postgres password>
+pg_host: 10.91.27.55
+pg_db:  dwh
+pg_user: postgres
+pg_pwd: postgres
 pg_port: 5432
 pg_schema: public
-nz_db: <your nz database name>
-nz_user: <your nz user name>
-nz_pwd: <your nz password>
+nz_db: DB_RESEVO
+nz_user: USR_RESEVO
+nz_pwd: passw0rd
 nz_client_dir: C:/Program Files (x86)/IBM Netezza Tools/Bin
-
+#nz_dsn: RESEVO
 nz_driver: NetezzaSQL
-nz_server: <nz IP address or hostname>
+nz_server: 10.91.27.99
 
